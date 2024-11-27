@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cartitem from "./Cartitem";
 import { useEffect } from "react";
 
-export default function Cart({ cart, setCart }) {
+export default function Cart({ cart, setCart, }) {
   const [cartCopy, setCartCopy] = useState([]);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Cart({ cart, setCart }) {
         </div>
         <div className="text-sm mb-2 flex justify-between">
           <span>Subtotal</span>
-          <span>KSh 16,000</span>
+          <span>Ksh. {cartCopy && cartCopy.reduce((acc,curr) => acc + curr.price,0).toLocaleString()}</span>
         </div>
         <div className="text-sm mb-4 flex justify-between">
           <span>Delivery Fee</span>
@@ -62,7 +62,7 @@ export default function Cart({ cart, setCart }) {
         </div>
         <div className="text-lg font-bold mb-4 flex justify-between">
           <span>Total</span>
-          <span>KSh 16,450</span>
+          <span>Ksh. {cartCopy && cartCopy.reduce((acc,curr) => acc + curr.price,+450).toLocaleString()} </span>
         </div>
         <button className="w-full bg-[#45C9A1] text-white py-2 rounded-md font-semibold hover:bg-teal-600">
           Checkout
